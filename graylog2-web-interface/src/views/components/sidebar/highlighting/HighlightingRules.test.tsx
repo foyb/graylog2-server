@@ -53,7 +53,7 @@ describe('HighlightingRules', () => {
       </HighlightingRuleContext.Provider>,
     );
 
-    expect(wrapper.text()).toMatch(/for foo = "bar"/);
-    expect(wrapper.text()).toMatch(/for response_time = "250"/);
+    expect(wrapper.text()).toMatch(/for foo == "bar"/);
+    expect(wrapper.text()).toMatch(/for response_time == "250"/);
   });
 });
