@@ -17,9 +17,11 @@
 // @flow strict
 import * as Immutable from 'immutable';
 
+import highlightConditionFunctions from 'views/logic/views/formatting/highlighting/highlightConditionFunctions';
+
 export type Value = string;
 export type Color = string;
-export type Condition = any;
+export type Condition = '==' | '!=' | '<=' | '>=' | '<' | '>';
 
 export type HighlightingRuleJSON = {
   field: string,
@@ -54,6 +56,10 @@ export default class HighlightingRule {
     return this._value.condition;
   }
 
+  get conditionFunc() {
+    return highlightConditionFunctions[this._value.condition || '=='];
+  }
+
   get color() {
     return this._value.color;
   }
@@ -61,7 +67,7 @@ export default class HighlightingRule {
   toBuilder() {
     const { field, value, condition, color } = this._value;
 
-    // eslint-disable-next-line no-use-before-define
+    // eslint-disable-next-line no-use-before-define,@typescript-eslint/no-use-before-define
     return new Builder(Immutable.Map({ field, value, condition, color }));
   }
 
@@ -69,9 +75,8 @@ export default class HighlightingRule {
     return new HighlightingRule(field, value, condition, color);
   }
 
-  // eslint-disable-next-line no-use-before-define
   static builder(): Builder {
-    // eslint-disable-next-line no-use-before-define
+    // eslint-disable-next-line no-use-before-define,@typescript-eslint/no-use-before-define
     return new Builder();
   }
 
