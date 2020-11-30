@@ -21,9 +21,6 @@ import { Pagination as BootstrapPagination } from 'react-bootstrap';
 // $FlowFixMe Need typing for react-ultimate-pagination dependency
 import { createUltimatePagination, ITEM_TYPES } from 'react-ultimate-pagination';
 import styled, { css } from 'styled-components';
-import type { StyledComponent } from 'styled-components';
-
-import type { ThemeInterface } from 'theme';
 
 import Icon from './Icon';
 
@@ -39,7 +36,7 @@ type Props = {
   onChange: (nextPage: number) => void,
 };
 
-const StyledBootstrapPagination: StyledComponent<undefined, ThemeInterface, unknown> = styled(BootstrapPagination)(({ theme }) => css`
+const StyledBootstrapPagination = styled(BootstrapPagination)(({ theme }) => css`
   &.pagination {
     font-size: ${theme.fonts.size.small};
     margin-top: 10px;

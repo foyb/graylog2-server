@@ -17,9 +17,8 @@
 import * as React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { $PropertyType } from 'utility-types';
-import styled, { StyledComponent } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { ThemeInterface } from 'theme';
 import EntityShareState, { GranteesList, CapabilitiesList } from 'logic/permissions/EntityShareState';
 import Capability from 'logic/permissions/Capability';
 import Grantee from 'logic/permissions/Grantee';
@@ -47,7 +46,7 @@ const FormElements = styled.div`
   display: flex;
 `;
 
-const Errors: StyledComponent<{}, ThemeInterface, HTMLDivElement> = styled.div(({ theme }) => `
+const Errors = styled.div(({ theme }) => css`
   width: 100%;
   margin-top: 3px;
   color: ${theme.colors.variant.danger};
